@@ -9,7 +9,7 @@
  namespace TSIHosting;
  
  if (!function_exists('SoapClient'))
-  throw new Exception('DomainBox needs the SOAP PHP extension.');
+  throw new \Exception('DomainBox needs the SOAP PHP extension.');
  
  class Domainbox
  {
@@ -24,7 +24,26 @@
      $this->user = $username;
      $this->pass = $password;
      
-     if ($sandbox)
-       $url = ''
+     $uri = $sandbox ? "https://sandbox.domainbox.net/?WSDL" : "https://live.domainbox.net/?WSDL";
+     
+     $this->client = new SoapClient($uri);
+   }
+   
+   private function doCall($func, $params)
+   {
+     $auth = array('AuthenicationParameters' => array('Reseller' => $this->reseller, 'Username' => $this->user, 'Password' => $this->pass));
+     
+     $command = array('CommandParameters' => $params);
+     
+     $request = array_merge($auth, $command);
+     
+     $result = $client->$func($request);
+     
+     return $results;
+   }
+   
+   function __call($func, $params)
+   {
+     $this->doCall($func, $params);
    }
  }
