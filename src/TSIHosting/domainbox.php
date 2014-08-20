@@ -8,7 +8,7 @@
  
  namespace TSIHosting;
  
- if (!function_exists('SoapClient'))
+ if (!extension_loaded('soap'))
   throw new \Exception('DomainBox needs the SOAP PHP extension.');
  
  class Domainbox
