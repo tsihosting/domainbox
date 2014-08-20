@@ -1,0 +1,23 @@
+{
+  "name": "tsihosting/domainbox",
+  "version": "0.1",
+  "description": "PHP Library to access the Domainbox SOAP API",
+  "keywords": ["domainbox", "api"],
+  "homepage": "http://www.tsihosting.co.uk",
+  "type": "library",
+  "license": "GPL2",
+  "authors": [
+    {
+      "name": "Tim Igoe",
+      "homepage": "http://tim.igoe.me.uk"
+    }
+  ],
+  "require": {
+    "php": ">=5.3"
+  },
+  "autoload": {
+    "psr-0": {
+      "TSIHosting": "src/"
+    }
+  }
+}
