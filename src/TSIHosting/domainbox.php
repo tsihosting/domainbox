@@ -26,7 +26,7 @@
      
      $uri = $sandbox ? "https://sandbox.domainbox.net/?WSDL" : "https://live.domainbox.net/?WSDL";
      
-     $this->client = new SoapClient($uri);
+     $this->client = new \SoapClient($uri, array('soap_version' => SOAP_1_2));
    }
    
    private function doCall($func, $params)
@@ -36,14 +36,14 @@
      $command = array('CommandParameters' => $params);
      
      $request = array_merge($auth, $command);
-     
-     $result = $client->$func($request);
+
+     $result = $this->client->$func($request);
      
      return $results;
    }
    
    function __call($func, $params)
    {
-     $this->doCall($func, $params);
+     $this->doCall($func, $params[0]);
    }
  }
