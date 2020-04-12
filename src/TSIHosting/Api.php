@@ -1,4 +1,4 @@
-<?
+<?php
 
 /**
  * The main class for accessing the XenServer XMLRPC API
