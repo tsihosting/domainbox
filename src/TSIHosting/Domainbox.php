@@ -6,12 +6,12 @@
  * @author Tim Igoe <tim@tsihosting.co.uk>
  */
  
- namespace TSIHosting;
+ namespace TSIHosting\Domainbox;
  
  if (!extension_loaded('soap'))
   throw new \Exception('DomainBox needs the SOAP PHP extension.');
  
- class Domainbox
+ class Api
  {
    private $reseller;
    private $user;
